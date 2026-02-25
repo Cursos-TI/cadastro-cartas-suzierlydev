@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h> //Para usar fgets
 
 // Desafio Super Trunfo - Países
 // Tema 1 - Cadastro das cartas
@@ -33,11 +34,13 @@ int main() {
     printf("Digite a letra do estado seguida de um número de 01 a 04 (exemplo - A01): \n");
     scanf("%s", codigo1);
 
-    printf("Digite Nome da cidade com apenas uma palavra: \n");
-    scanf("%s", cidade1);
+    printf("Digite o nome da cidade: \n");
+    getchar(); // limpa o \n que ficou do scanf anterior
+    fgets(cidade1, sizeof(cidade1), stdin);
+    cidade1[strcspn(cidade1, "\n")] = '\0'; // remove o \n
 
     printf("Digite o número de habitantes da cidade: \n");
-    scanf("%u", &habitantes1);
+    scanf("%lu", &habitantes1);
 
     printf("Digite a área da cidade em quilometros quadrados: \n");
     scanf("%f", &area1);
@@ -92,11 +95,13 @@ int main() {
     printf("Digite a letra do estado seguida de um número de 01 a 04 (exemplo - A01): \n");
     scanf("%s", codigo2);
 
-    printf("Digite Nome da cidade com apenas uma palavra: \n");
-    scanf("%s", cidade2);
+    printf("Digite o nome da cidade: \n");
+    getchar(); 
+    fgets(cidade2, sizeof(cidade2), stdin);
+    cidade2[strcspn(cidade2, "\n")] = '\0';
 
     printf("Digite o número de habitantes da cidade: \n");
-    scanf("%u", &habitantes2);
+    scanf("%lu", &habitantes2);
 
     printf("Digite a área da cidade em quilometros quadrados: \n");
     scanf("%f", &area2);
@@ -130,7 +135,7 @@ int main() {
     printf("PIB per capita: %.2f\n", pibpercapita2);
     printf("Super Poder: %.2f \n \n", superpoder2);
 
-    //Comparação das propriedades das cartas
+    /*Comparação das propriedades das cartas
     int resultadohab;
     int resultadoarea;
     int resultadopib;
@@ -151,9 +156,20 @@ int main() {
       printf("Área: %d \n", resultadoarea);
       printf("PIB: %d \n", resultadopib);
       printf("Pontos turísticos: %d \n", resultadopontos);
-      print("Densidade Populacional: %d \n", resultadodens);
-      print("PIB per capita: %d \n", resultadopibpercapita);
-      print("Super Poder: %d \n", resultadosuperpoder);
+      printf("Densidade Populacional: %d \n", resultadodens);
+      printf("PIB per capita: %d \n", resultadopibpercapita);
+      printf("Super Poder: %d \n", resultadosuperpoder);
+*/
 
+// Comparando atributo superpoder
+
+printf("Carta 1 - Superpoder: %.2f \n", superpoder1);
+printf("Carta 2 - Superpoder: %.2f \n", superpoder2);
+
+if(superpoder1>superpoder2){
+printf("Resultado: Carta 1 venceu!\n");
+} else {
+printf("Resultado: Carta 2 venceu!\n");
+}
 return 0;
 } 
